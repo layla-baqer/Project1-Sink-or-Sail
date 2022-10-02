@@ -2,6 +2,7 @@
 // Select elements from the HTML using query selector.
 // name the selected elements as following:
 // container, instructionsButton, progressBar, ship, word & letters.
+let letterDivsContainer = document.querySelector(".letters-divs-container")
 // 2.
 // create all variables:
 // wordsArray: an array that contains multiple words (20 words) to be given to the player to guess its letters.
@@ -18,6 +19,16 @@
 // use fromCharCode to fill inner text of each div with an alphabetic letter.
 // add event listener for click on each div
 // add a round/circle border OR a bubble background to the created divs.
+const generateDivs = () => {
+    for(let i=0; i<26; i++) {
+        const lettersDivs = document.createElement("div")
+        lettersDivs.classList.add("letter")
+        lettersDivs.innerText = String.fromCharCode(i+65)
+        lettersDivs.addEventListener("click", guessedLetter)
+        letterDivsContainer.appendChild(lettersDivs)
+        console.log("div created")
+    }
+}
 // 4.
 // create a function called "wordGenerator" to randomly generate a word from the "wordsArray"
 // use Math.floor(Math.random()*20) to generate a random index for the "wordsArray"
@@ -32,6 +43,9 @@
 // give the new divs a class name "word" & append them to the div word-guess.
 // 6.
 // create a function called "guessedLetter" to check if the chosen letter is correct or not.
+const guessedLetter = () => {
+
+}
 // store the new chosen letter in "guessedLetter" with event.target.innerText
 // use if statement that checks if the chosen letter is correct using randomWordArray.includes(guessedLetter)
 // if the statement is correct then check in which index the letter exists.
@@ -50,3 +64,8 @@
 // create function called "showInstructions" for when the instructionsButton is clicked
 // add image infront of the container div with the instructions in it & make the container div blurry
 // add event listener for click on the blurry container div to remove the instructions image.
+
+
+document.addEventListener("DOMContentLoaded", ()=> {
+    generateDivs()
+})

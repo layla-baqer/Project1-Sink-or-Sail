@@ -1,0 +1,66 @@
+.container {
+    border: 2px solid yellow;
+    height: 95vh;
+    width: 95vw;
+}
+
+.progress-bar-container {
+    border: 2px solid purple;
+    display: flex;
+    height: 5%;
+}
+.left-instructions {
+    border: 2px solid blue;
+    width: 20%;
+}
+.center-progress-bar {
+    border: 2px solid pink;
+    width: 60%;
+}
+.right-placeholder {
+    border: 2px solid lightseagreen;
+    width: 20%;
+}
+
+.main-container {
+    border: 2px solid orange;
+    height: 94%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.main-container > div {
+    border: 2px solid green;
+    height: 100%;
+    width: 50%;
+}
+
+.word-container {
+
+}
+.word-container > div {
+    border: 0.5px solid red;
+    height: 50%;
+    width: 100%;
+}
+
+.letters-divs-container {
+    background-color: aquamarine;
+    height: fit-content;
+    width: 90%;
+    margin: 5%;
+    margin-top: 20%;
+    text-align: center;
+}
+.letter {
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 100%;
+    padding: 4px;
+    margin: 3px;
+    width: 18px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: cursive;
+    text-align: center;
+}
