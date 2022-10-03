@@ -5,6 +5,7 @@
 let letterDivsContainer = document.querySelector(".letters-divs-container")
 let wordContainer = document.querySelector(".word-container")
 let ship = document.querySelector("#ship")
+let resetBtn = document.querySelector(".reset")
 // 2.
 // create all variables:
 // wordsArray: an array that contains multiple words (20 words) to be given to the player to guess its letters.
@@ -24,9 +25,10 @@ disable = 0
 // 3.
 const generateDivs = () => {
     for(let i=0; i<26; i++) {
-        const lettersDivs = document.createElement("div")
+        const lettersDivs = document.createElement("button")
         lettersDivs.classList.add("letter")
         lettersDivs.innerText = String.fromCharCode(i+65)
+        // letterDivs.type = 'number'
         lettersDivs.addEventListener("click", guessedLetter)
         letterDivsContainer.appendChild(lettersDivs)
         console.log("div created")
@@ -128,4 +130,17 @@ const winLoseMessage = () => {
 document.addEventListener("DOMContentLoaded", ()=> {
     generateDivs()
     wordGenerator()
+    resetBtn.addEventListener("click", ()=>{
+        const clearWordDiv = document.querySelectorAll(".word")
+        for(let i=0; i<lengthRandWordArr; i++) {
+            clearWordDiv[i].innerText = " "
+        }
+        const clearLetterColor = document.querySelectorAll(".letter")
+        for(let i=0; i<26; i++) {
+            clearLetterColor[i].style.color = "white"
+        }
+        ship.src = `Images/Boat.png`
+        disable = 0
+        faultLetter = 0
+    })
 })
