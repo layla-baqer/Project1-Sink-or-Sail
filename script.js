@@ -4,6 +4,7 @@
 // container, instructionsButton, progressBar, ship, word & letters.
 let letterDivsContainer = document.querySelector(".letters-divs-container")
 let wordContainer = document.querySelector(".word-container")
+let ship = document.querySelector("#ship")
 // 2.
 // create all variables:
 // wordsArray: an array that contains multiple words (20 words) to be given to the player to guess its letters.
@@ -17,6 +18,8 @@ let newWordArray = []
 // guess: stores the newly guessed letter.
 let guess
 // faultLetter: counts the number of letters that were guessed incorectly which will be used to diplay lose
+faultLetter = 0
+disable = 0
 // message (max number of wrong guesses is 7)
 // 3.
 const generateDivs = () => {
@@ -58,27 +61,38 @@ const wordGenerator = () => {
 // 6.
 // create a function called "guessedLetter" to check if the chosen letter is correct or not.
 const guessedLetter = (event) => {
-    guess = event.target.innerText
-    if (randomWordArray.includes(guess)) {
-        let index = []
-        randomWordArray.forEach(function(letter, idx) {
-            if (letter == guess){
-                index.push(idx)
-            }
-        })
-        for (let i=0; i<index.length; i++) {
-            newWordArray.splice(index[i], 1, guess)
-        }
-
-        // stores the new guessed letters in the word shown
-        let wordElements = wordContainer.getElementsByTagName("div")
-        for (let i=0; i<wordElements.length; i++) {
-            wordElements[i].innerText = newWordArray[i]
-        }
-    } else {
-        console.log("No")
+    if (event.target.style.color == "blue") {
+        return
     }
-    winLoseMessage()
+
+    if (disable == 0) {
+        event.target.style.color = "Blue"
+        guess = event.target.innerText
+        console.log(guess)
+
+        if (randomWordArray.includes(guess)) {
+            let index = []
+            randomWordArray.forEach(function(letter, idx) {
+                if (letter == guess){
+                    index.push(idx)
+                }
+            })
+            for (let i=0; i<index.length; i++) {
+            newWordArray.splice(index[i], 1, guess)
+            }
+
+            // stores the new guessed letters in the word shown
+            let wordElements = wordContainer.getElementsByTagName("div")
+            for (let i=0; i<wordElements.length; i++) {
+                wordElements[i].innerText = newWordArray[i]
+            }
+        } else {
+            faultLetter++
+            console.log(faultLetter)
+            ship.src = `Images/Boat ${faultLetter}.png`
+        }
+        winLoseMessage()
+    }
 }
 // store the new chosen letter in "guessedLetter" with event.target.innerText
 // use if statement that checks if the chosen letter is correct using randomWordArray.includes(guessedLetter)
@@ -90,12 +104,12 @@ const guessedLetter = (event) => {
 const winLoseMessage = () => {
     let newWordString = newWordArray.toString()
     let randomWordString = randomWordArray.toString()
-    console.log(newWordString)
-    console.log(randomWordString)
     if (newWordString == randomWordString) {
         console.log("Winner")
-    } else {
-        console.log("Not Yet")
+        disable = 1
+    } else if (faultLetter == 8) {
+        console.log("Lost")
+        disable = 1
     }
 }
 // use the else statement for if the chosen letter is not correct & change the letter color & remove the
