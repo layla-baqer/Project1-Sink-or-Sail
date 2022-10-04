@@ -1,7 +1,12 @@
+body {
+    position: absolute;
+}
+
 .container {
     border: 2px solid yellow;
     height: 95vh;
     width: 95vw;
+    z-index: -1;
 }
 
 .progress-bar-container {
@@ -24,6 +29,8 @@
 
 .main-container {
     border: 2px solid orange;
+    background-image: url("Images/Sea\ Background\ 1.png");
+    background-size: cover;
     height: 94%;
     display: flex;
     justify-content: space-evenly;
@@ -60,7 +67,6 @@
 }
 
 .letters-divs-container {
-    background-color: aquamarine;
     height: fit-content;
     width: 90%;
     margin: 5%;
@@ -85,4 +91,8 @@
 
 .ship-container img {
     align-content: center;
+}
+
+.pop-up {
+    z-index: 1;
 }

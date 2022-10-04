@@ -5,7 +5,9 @@
 let letterDivsContainer = document.querySelector(".letters-divs-container")
 let wordContainer = document.querySelector(".word-container")
 let ship = document.querySelector("#ship")
+let instructionsBtn = document.querySelector(".instructions")
 let resetBtn = document.querySelector(".reset")
+let body = document.querySelector("body")
 // 2.
 // create all variables:
 // wordsArray: an array that contains multiple words (20 words) to be given to the player to guess its letters.
@@ -63,12 +65,13 @@ const wordGenerator = () => {
 // 6.
 // create a function called "guessedLetter" to check if the chosen letter is correct or not.
 const guessedLetter = (event) => {
-    if (event.target.style.color == "blue") {
+    if (event.target.style.color == "darkslategrey") {
         return
     }
 
     if (disable == 0) {
-        event.target.style.color = "Blue"
+        event.target.style.color = "darkslategrey"
+        event.target.style.border = "none"
         guess = event.target.innerText
         console.log(guess)
 
@@ -130,14 +133,21 @@ const winLoseMessage = () => {
 document.addEventListener("DOMContentLoaded", ()=> {
     generateDivs()
     wordGenerator()
+    instructionsBtn.addEventListener("click", ()=>{
+        const popInstruction = document.createElement("div")
+        popInstruction.classList.add("pop-up")
+        popInstruction.innerText = "This is the instructions -0fe-ifoejfe kwnvjwernv oewnmvkldnmv kewnvpken wmvkmds fekwmfp fmkewnmvw wekfm;ewfmew fkemfe;kf"
+        body.appendChild(popInstruction)
+    })
     resetBtn.addEventListener("click", ()=>{
         const clearWordDiv = document.querySelectorAll(".word")
         for(let i=0; i<lengthRandWordArr; i++) {
             clearWordDiv[i].innerText = " "
         }
-        const clearLetterColor = document.querySelectorAll(".letter")
+        const resetLetter = document.querySelectorAll(".letter")
         for(let i=0; i<26; i++) {
-            clearLetterColor[i].style.color = "white"
+            resetLetter[i].style.color = "white"
+            resetLetter[i].style.border = "2px solid white"
         }
         ship.src = `Images/Boat.png`
         disable = 0
