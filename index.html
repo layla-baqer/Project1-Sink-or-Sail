@@ -9,11 +9,10 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="pop-up">This is the instructions -0fe-ifoejfe kwnvjwernv oewnmvkldnmv kewnvpken wmvkmds fekwmfp fmkewnmvw wekfm;ewfmew fkemfe;kf</div>
     <div class="container">
         <div class="progress-bar-container">
             <div class="left-instructions">
-                <button class="instructions">Instructions</button>
+                <button id="instructions">Instructions</button>
             </div>
             <div class="center-progress-bar"></div>
             <div class="right-reset">
@@ -22,6 +21,13 @@
         </div>
         <div class="main-container">
             <div class="ship-container">
+                <div id="modal-id" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p class="text-content"></p>
+                        <button class="close-button">Close</button>
+                    </div>
+                </div>
                 <img id="ship" src="Images/Boat.png" alt="Boat">
             </div>
             <div class="right-container">
