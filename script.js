@@ -11,17 +11,11 @@ let modalBtn = document.querySelector(".close-button")
 let modalResetBtn = document.querySelector(".modal-reset")
 let resetBtn = document.querySelector(".reset")
 let body = document.querySelector("body")
+
+
+const start = () => {
+
 // 2.
-// create all variables:
-let wordsArray = ["APPLE", "BOX", "BANANA", "WATER", "SHIP", "BOAT", "ANCHOR", "FLAG", "SIREN", "ANTENNA", "LADDER", "FISH", "WAVE", "BUBBLE", "ROCK", "SAND", "ORANGE", "AVOCADO", "SALMON", "STORM"]
-let randomWord = wordsArray[Math.floor(Math.random()*19)]
-let randomWordArray = Array.from(randomWord)
-let lengthRandWordArr = randomWordArray.length
-let newWordArray = []
-let guess
-faultLetter = 0
-disable = 0
-// 3.
 // create alphabetic letters divs
 const generateDivs = () => {
     for(let i=0; i<26; i++) {
@@ -32,6 +26,16 @@ const generateDivs = () => {
         letterDivsContainer.appendChild(lettersDivs)
     }
 }
+// 3.
+// create all variables:
+let wordsArray = ["APPLE", "BOX", "BANANA", "WATER", "SHIP", "BOAT", "ANCHOR", "FLAG", "SIREN", "ANTENNA", "LADDER", "FISH", "WAVE", "BUBBLE", "ROCK", "SAND", "ORANGE", "AVOCADO", "SALMON", "STORM"]
+let randomWord = wordsArray[Math.floor(Math.random()*19)]
+let randomWordArray = Array.from(randomWord)
+let lengthRandWordArr = randomWordArray.length
+let newWordArray = []
+let guess
+faultLetter = 0
+disable = 0
 // 4.
 // create random word divs
 const wordGenerator = () => {
@@ -46,6 +50,11 @@ const wordGenerator = () => {
         wordDivs.innerText = newWordArray[i]
         wordContainer.appendChild(wordDivs)
     }
+}
+
+
+generateDivs()
+wordGenerator()
 }
 
 // 6.
@@ -129,8 +138,7 @@ const winLoseMessage = () => {
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    generateDivs()
-    wordGenerator()
+    start()
     instructionsBtn.addEventListener("click", ()=>{
         modal.style.display = "block"
         modalText.innerText = "Instructions"
