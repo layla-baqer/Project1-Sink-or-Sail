@@ -1,7 +1,7 @@
 // 1.
 // Select elements from the HTML using query selector.
 let letterDivsContainer = document.querySelector(".letters-divs-container")
-let wordContainer = document.querySelector(".wordDivsContainer")
+let wordContainer = document.querySelector(".word-container")
 let ship = document.querySelector("#ship")
 let instructionsBtn = document.querySelector("#instructions")
 let modal = document.querySelector("#modal-id")
@@ -11,22 +11,7 @@ let modalBtn = document.querySelector(".close-button")
 let modalResetBtn = document.querySelector(".modal-reset")
 let resetBtn = document.querySelector(".reset")
 let body = document.querySelector("body")
-
-
-const start = () => {
-
 // 2.
-// create alphabetic letters divs
-const generateDivs = () => {
-    for(let i=0; i<26; i++) {
-        const lettersDivs = document.createElement("button")
-        lettersDivs.classList.add("letter")
-        lettersDivs.innerText = String.fromCharCode(i+65)
-        lettersDivs.addEventListener("click", guessedLetter)
-        letterDivsContainer.appendChild(lettersDivs)
-    }
-}
-// 3.
 // create all variables:
 let wordsArray = ["APPLE", "BOX", "BANANA", "WATER", "SHIP", "BOAT", "ANCHOR", "FLAG", "SIREN", "ANTENNA", "LADDER", "FISH", "WAVE", "BUBBLE", "ROCK", "SAND", "ORANGE", "AVOCADO", "SALMON", "STORM"]
 let randomWord = wordsArray[Math.floor(Math.random()*19)]
@@ -36,8 +21,18 @@ let newWordArray = []
 let guess
 faultLetter = 0
 disable = 0
+// 3.
+// create functions
+const generateDivs = () => {
+    for(let i=0; i<26; i++) {
+        const lettersDivs = document.createElement("button")
+        lettersDivs.classList.add("letter")
+        lettersDivs.innerText = String.fromCharCode(i+65)
+        lettersDivs.addEventListener("click", guessedLetter)
+        letterDivsContainer.appendChild(lettersDivs)
+    }
+}
 // 4.
-// create random word divs
 const wordGenerator = () => {
     console.log(randomWordArray)
     newWordArray = [...Array(lengthRandWordArr)].map(x => " ")
@@ -50,11 +45,6 @@ const wordGenerator = () => {
         wordDivs.innerText = newWordArray[i]
         wordContainer.appendChild(wordDivs)
     }
-}
-
-
-generateDivs()
-wordGenerator()
 }
 
 // 6.
@@ -138,7 +128,8 @@ const winLoseMessage = () => {
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    start()
+    generateDivs()
+    wordGenerator()
     instructionsBtn.addEventListener("click", ()=>{
         modal.style.display = "block"
         modalText.innerText = "Instructions"
@@ -151,26 +142,28 @@ document.addEventListener("DOMContentLoaded", ()=> {
         modal.style.display = "none"
         modalText.innerText = ""
     })
+
     resetBtn.addEventListener("click", ()=>{
-        // const clearWordDiv = document.querySelectorAll(".word")
-        const wordDivsContainer = document.querySelector(".wordDivsContainer")
-        console.log(wordDivsContainer)
-        while(wordDivsContainer.firstChild){
-            wordDivsContainer.removeChild(wordDivsContainer.firstChild)
+        const clearWordDiv = document.querySelectorAll(".word")
+        for(let i=0; i<lengthRandWordArr; i++) {
+            clearWordDiv[i].innerText = " "
         }
-        // for(let i=0; i<lengthRandWordArr; i++) {
-        //     clearWordDiv[i].innerText = " "
-        // }
-        console.log(newWordArray)
         const resetLetter = document.querySelectorAll(".letter")
         for(let i=0; i<26; i++) {
             resetLetter[i].style.color = "white"
             resetLetter[i].style.border = "2px solid white"
         }
+        randomWord = wordsArray[Math.floor(Math.random()*19)]
+        randomWordArray = Array.from(randomWord)
+        lengthRandWordArr = randomWordArray.length
+        newWordArray = []
+        // how to delete the word divs
+        wordGenerator()
         ship.src = `Images/Boat.png`
         disable = 0
         faultLetter = 0
     })
+
     modalResetBtn.addEventListener("click", ()=>{
         const clearWordDiv = document.querySelectorAll(".word")
         for(let i=0; i<lengthRandWordArr; i++) {
