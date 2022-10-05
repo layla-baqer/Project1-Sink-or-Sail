@@ -29,7 +29,8 @@ body {
 
 .main-container {
     border: 2px solid orange;
-    background-image: url("Images/Sea\ Background\ 1.png");
+    /* background-image: url("Images/Sea\ Background.png"); */
+    background-image: url("Images/Sea_Background_0.png");
     background-size: cover;
     height: 94%;
     display: flex;

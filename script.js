@@ -2,7 +2,8 @@
 // Select elements from the HTML using query selector.
 let letterDivsContainer = document.querySelector(".letters-divs-container")
 let wordContainer = document.querySelector(".word-container")
-let ship = document.querySelector("#ship")
+// let ship = document.querySelector("#ship")
+let ship = document.querySelector(".main-container")
 let instructionsBtn = document.querySelector("#instructions")
 let modal = document.querySelector("#modal-id")
 let modalText = document.querySelector(".text-content")
@@ -78,7 +79,8 @@ const guessedLetter = (event) => {
         } else {
             faultLetter++
             console.log(faultLetter)
-            ship.src = `Images/Boat ${faultLetter}.png`
+            ship.style.backgroundImage = `url("Images/Sea_Background_${faultLetter}.png")`
+            // ship.src = `Images/Sea_Background_${faultLetter}.png`
         }
         winLoseMessage()
     }
@@ -92,30 +94,27 @@ const winLoseMessage = () => {
         modal.style.display = "block"
         modalText.innerText = "Winner"
         modalBtn.innerText = "Return to Game"
-        modalBtn.addEventListener("click", ()=>{
-            modal.style.display = "none"
-            modalText.innerText = ""
-        })
-        closeModal.addEventListener("click", ()=>{
-            modal.style.display = "none"
-            modalText.innerText = ""
-        })
+        modalClose()
         disable = 1
-    } else if (faultLetter == 8) {
+    } else if (faultLetter == 7) {
         console.log("Lost")
         modal.style.display = "block"
-        modalText.innerText = `You Lost.<br>The correct answer is ${randomWord}`
+        modalText.innerHTML = `You Lost.<br>The correct answer is ${randomWord}`
         modalBtn.innerText = "Return to Game"
-        modalBtn.addEventListener("click", ()=>{
-            modal.style.display = "none"
-            modalText.innerText = ""
-        })
-        closeModal.addEventListener("click", ()=>{
-            modal.style.display = "none"
-            modalText.innerText = ""
-        })
+        modalClose()
         disable = 1
     }
+}
+
+const modalClose = () => {
+    modalBtn.addEventListener("click", ()=>{
+        modal.style.display = "none"
+        modalText.innerText = ""
+    })
+    closeModal.addEventListener("click", ()=>{
+        modal.style.display = "none"
+        modalText.innerText = ""
+    })
 }
 
 // 7.
@@ -126,57 +125,57 @@ const winLoseMessage = () => {
 // add image infront of the container div with the instructions in it & make the container div blurry
 // add event listener for click on the blurry container div to remove the instructions image.
 
+const startGame = () => {
 
-document.addEventListener("DOMContentLoaded", ()=> {
-    generateDivs()
-    wordGenerator()
-    instructionsBtn.addEventListener("click", ()=>{
-        modal.style.display = "block"
-        modalText.innerText = "Instructions"
-    })
-    modalBtn.addEventListener("click", ()=>{
-        modal.style.display = "none"
-        modalText.innerText = ""
-    })
-    closeModal.addEventListener("click", ()=>{
-        modal.style.display = "none"
-        modalText.innerText = ""
-    })
-
-    resetBtn.addEventListener("click", ()=>{
-        const clearWordDiv = document.querySelectorAll(".word")
-        for(let i=0; i<lengthRandWordArr; i++) {
-            clearWordDiv[i].innerText = " "
-        }
-        const resetLetter = document.querySelectorAll(".letter")
-        for(let i=0; i<26; i++) {
-            resetLetter[i].style.color = "white"
-            resetLetter[i].style.border = "2px solid white"
-        }
-        randomWord = wordsArray[Math.floor(Math.random()*19)]
-        randomWordArray = Array.from(randomWord)
-        lengthRandWordArr = randomWordArray.length
-        newWordArray = []
-        // how to delete the word divs
+    document.addEventListener("DOMContentLoaded", ()=> {
+        generateDivs()
         wordGenerator()
-        ship.src = `Images/Boat.png`
-        disable = 0
-        faultLetter = 0
+        instructionsBtn.addEventListener("click", ()=>{
+            modal.style.display = "block"
+            modalText.innerText = "Instructions"
+        })
+        modalBtn.addEventListener("click", ()=>{
+            modal.style.display = "none"
+            modalText.innerText = ""
+        })
+        closeModal.addEventListener("click", ()=>{
+            modal.style.display = "none"
+            modalText.innerText = ""
+        })
+        
+        modalResetBtn.addEventListener("click", ()=>{
+            modal.style.display = "none"
+            resetAll()
+        })
     })
+}
 
-    modalResetBtn.addEventListener("click", ()=>{
-        const clearWordDiv = document.querySelectorAll(".word")
-        for(let i=0; i<lengthRandWordArr; i++) {
-            clearWordDiv[i].innerText = " "
-        }
-        const resetLetter = document.querySelectorAll(".letter")
-        for(let i=0; i<26; i++) {
-            resetLetter[i].style.color = "white"
-            resetLetter[i].style.border = "2px solid white"
-        }
-        ship.src = `Images/Boat.png`
-        disable = 0
-        faultLetter = 0
-        modal.style.display = "none"
-    })
+startGame()
+
+resetBtn.addEventListener("click", ()=>{
+    resetAll()
 })
+
+const resetAll = () => {
+    startGame()
+    const clearWordDiv = document.querySelectorAll(".word")
+    for(let i=0; i<lengthRandWordArr; i++) {
+        clearWordDiv[i].innerText = " "
+    }
+    const resetLetter = document.querySelectorAll(".letter")
+    for(let i=0; i<26; i++) {
+        resetLetter[i].style.color = "white"
+        resetLetter[i].style.border = "2px solid white"
+    }
+    randomWord = wordsArray[Math.floor(Math.random()*19)]
+    randomWordArray = Array.from(randomWord)
+    lengthRandWordArr = randomWordArray.length
+    newWordArray = []
+    // to delete the word divs
+    wordContainer.innerHTML = ""
+    wordGenerator()
+    ship.style.backgroundImage = `url("Images/Sea_Background_0.png")`
+    // ship.src = `Images/Boat.png`
+    disable = 0
+    faultLetter = 0
+}  
