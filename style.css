@@ -9,6 +9,33 @@ body {
     width: 100vw;
 }
 
+.start-container {
+    margin-left: 600px;
+}
+
+.game-title {
+    padding: 80px;
+    text-align: center;
+    color : #228c8a;
+    font-size: 50px;
+    font-family: cursive;
+}
+
+.button-container {
+    text-align: center;
+}
+#start-game {
+    background-color: #0e4542;
+    border: 4px solid #0e4542;
+    padding: 8px 40px 8px 40px;
+}
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: cursive;
+}
+
 .progress-bar-container {
     border: 2px solid purple;
     background-color: #d7e2e8;

@@ -85,7 +85,7 @@ const guessedLetter = (event) => {
             // ship.src = `Images/Sea_Background_${faultLetter}.png`
             progress = progress-(100/7)
             progressBar.style.width = `${progress}%`
-            progressBar.innerText = `${faultLetter}/7`
+            progressBar.innerText = `${7-faultLetter}/7`
         }
         winLoseMessage()
     }
@@ -153,6 +153,7 @@ const startGame = () => {
 }
 
 startGame()
+
 
 resetBtn.addEventListener("click", ()=>{
     resetAll()
