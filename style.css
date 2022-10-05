@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
     height: 100vh;
     width: 100vw;
 }
@@ -37,23 +37,23 @@ a {
 }
 
 .progress-bar-container {
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
     background-color: #d7e2e8;
     display: flex;
     height: 5%;
     padding-top: 10px;
 }
 .left-instructions {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     width: 20%;
     text-align: center;
 }
 .center-progress-bar {
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     width: 60%;
 }
 .right-reset {
-    border: 2px solid lightseagreen;
+    /* border: 2px solid lightseagreen; */
     width: 20%;
     text-align: center;
 }
@@ -81,7 +81,7 @@ a {
 }
 
 .main-container {
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
     /* background-image: url("Images/Sea\ Background.png"); */
     background-image: url("Images/Sea_Background_0.png");
     background-size: cover;
@@ -90,13 +90,13 @@ a {
     justify-content: space-evenly;
 }
 .main-container > div {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     height: 100%;
     width: 50%;
 }
 
 .right-container > div {
-    border: 0.5px solid red;
+    /* border: 0.5px solid red; */
     height: 50%;
     width: 100%;
 }
