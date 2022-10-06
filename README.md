@@ -30,8 +30,18 @@ Reset button is provided on the top right corner of the game page which can be u
 
 ### Wireframes  
   
-![Wireframe](Images/Wireframe.PNG)  
+* Game Outline:  
 
+![Wireframe](Images/Wireframe.PNG)  
+  
+* Start Page:  
+  
+![Start](Images/Start.PNG)  
+  
+* Game Page:  
+  
+![Game](Images/Game.PNG)  
+  
 
 ### Post-project reflection  
 Following ideas would be added in future development of the game:  
