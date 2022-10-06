@@ -2,10 +2,10 @@
 
 
 ### Description of the app
-<p style="text-align: justify;">The Sink or Sail game is similar to the hangman game except you have a ship instead of a man.  
+The Sink or Sail game is similar to the hangman game except you have a ship instead of a man.  
 You will have a randomly generated word by the JavaScript & you have to guess it. The number of letters in the word will be displayed on the screen with circles. You can choose a letter by clicking on it, if the word contains the letter chosen it will be added to the empty circles & if not your ship will be damaged. When you guess the word completely there will be a win message displayed & if you guess 7 letters incorrectly the ship will sink and you will have a message displaying the lose message with the correct answer.  
 Instructions are provided in the game on the top left corner which can be diplayed at any time during the game.  
-Reset button is provided on the top right corner of the game page which can be used to reset the game & generate a new random word at any time during the game. Also, there are reset buttons in the instructions pop-up & the win or lose message pop-up which all work the same.</p>  
+Reset button is provided on the top right corner of the game page which can be used to reset the game & generate a new random word at any time during the game. Also, there are reset buttons in the instructions pop-up & the win or lose message pop-up which all work the same.  
 
 
 ### Link to the game  
@@ -29,6 +29,8 @@ Reset button is provided on the top right corner of the game page which can be u
 
 
 ### Wireframes  
+  
+![Wireframe](Images/Wireframe.PNG)  
 
 
 ### Post-project reflection  
